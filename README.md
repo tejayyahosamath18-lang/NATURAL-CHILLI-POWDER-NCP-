@@ -36,5 +36,5 @@ Product Development & Branding
 Business Intelligence Reporting
 This project demonstrates the use of SQL, Excel, Power BI, MS Word, and PowerPoint to transform business data into meaningful insights, helping organizations make informed decisions, improve marketing effectiveness, optimize financial performance, and support sustainable business growth.
 
-<img width="1600" height="800" alt="WhatsApp Image 2026-06-17 at 6 19 29 PM" src="https://github.com/user-attachments/assets/3ea07a89-9ff7-4597-9027-9ac146540c36" />
+
 <img width="1600" height="800" alt="WhatsApp Image 2026-06-19 at 3 07 20 PM" src="https://github.com/user-attachments/assets/e544f412-b3bc-4d20-a39d-53905eda0955" />
