@@ -1,0 +1,70 @@
+#SQL DATABASE - CUSTOMER DATA BASE & TYPES 
+-- CREATE DATABASE NCP_Business;
+-- USE NCP_Business;
+
+-- 1. Customer Table (including BP patients & health conscious)
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY IDENTITY(1,1),
+    FullName VARCHAR(100),
+    Age INT,
+    Gender VARCHAR(10),
+    City VARCHAR(50),
+    State VARCHAR(50),
+    Category VARCHAR(20) CHECK (Category IN ('Elderly', 'BP_Patient', 'Health_Conscious', 'Organic_Buyer', 'Chef', 'General')),
+    IsHypertensive BIT, -- 1 = BP patient, 0 = normal
+    IsHealthConscious BIT,
+    MonthlySpendINR DECIMAL(10,2),
+    PreferredProduct VARCHAR(50),
+    RegisteredDate DATE
+);
+
+-- 2. Product Table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(50),
+    Category VARCHAR(30), -- 'Chilli', 'Tamarind', 'Chutney', 'Sweet', 'Mango'
+    BaseIngredient VARCHAR(50),
+    IsZeroSalt BIT,
+    PriceINR DECIMAL(10,2)
+);
+
+-- 3. Sales Transaction Table
+CREATE TABLE Sales (
+    SaleID INT PRIMARY KEY IDENTITY(1,1),
+    CustomerID INT FOREIGN KEY REFERENCES Customers(CustomerID),
+    ProductID INT FOREIGN KEY REFERENCES Products(ProductID),
+    Quantity INT,
+    SaleDate DATE,
+    DiscountPercent DECIMAL(5,2),
+    TotalAmount DECIMAL(10,2)
+);
+
+-- 4. Insert Sample Data (30 customers for analysis)
+INSERT INTO Customers VALUES
+('Rajesh Sharma', 68, 'M', 'Delhi', 'Delhi', 'Elderly', 1, 1, 450, 'NCP Chilli', '2024-01-10'),
+('Sneha Reddy', 45, 'F', 'Hyderabad', 'Telangana', 'BP_Patient', 1, 1, 680, 'Imli Bottle', '2024-02-15'),
+('Amit Patil', 32, 'M', 'Mumbai', 'Maharashtra', 'Health_Conscious', 0, 1, 890, 'Dhaniya Mint', '2024-01-20'),
+('Lakshmi Bai', 72, 'F', 'Chennai', 'Tamil Nadu', 'Elderly', 1, 0, 320, 'Dry Fruit Honey', '2024-03-01'),
+('Vikram Singh', 28, 'M', 'Jaipur', 'Rajasthan', 'Organic_Buyer', 0, 1, 1200, 'Garlic Chilli', '2024-02-05'),
+('Geeta Anand', 58, 'F', 'Pune', 'Maharashtra', 'BP_Patient', 1, 1, 540, 'NCP Chilli', '2024-01-28'),
+('Arjun Nair', 41, 'M', 'Kochi', 'Kerala', 'Chef', 0, 1, 2100, 'Mango Jaleera', '2024-02-20'),
+('Sunita Gupta', 65, 'F', 'Lucknow', 'UP', 'Elderly', 1, 0, 280, 'Imli Bottle', '2024-03-10');
+
+-- (Add more rows to reach 30 for realism)
+
+-- 5. Useful SQL Queries for your analysis
+-- Top 5 cities with most BP patients buying NCP
+SELECT TOP 5 City, COUNT(*) AS BP_Customer_Count 
+FROM Customers WHERE IsHypertensive = 1 
+GROUP BY City ORDER BY BP_Customer_Count DESC;
+
+-- Most preferred product by elderly
+SELECT PreferredProduct, COUNT(*) AS Preference_Count
+FROM Customers WHERE Category = 'Elderly'
+GROUP BY PreferredProduct ORDER BY Preference_Count DESC;
+
+-- Total revenue by health condition
+SELECT 
+    CASE WHEN IsHypertensive = 1 THEN 'BP Patient' ELSE 'Non-BP' END AS HealthType,
+    SUM(MonthlySpendINR) AS TotalRevenue
+FROM Customers GROUP BY IsHypertensive;
