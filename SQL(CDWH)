@@ -1,0 +1,42 @@
+#CUSTOMER DATA WITH HEALTH CATEGORIES (SQL)
+CREATE DATABASE SpiceConnect;
+USE SpiceConnect;
+
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    full_name VARCHAR(100),
+    age INT,
+    city VARCHAR(50),
+    state VARCHAR(50),
+    customer_type VARCHAR(20), -- Retail, Wholesale, Vendor
+    health_conscious VARCHAR(3), -- Yes/No
+    healthcare_condition VARCHAR(50), -- BP, Diabetes, None, Heart Issue
+    bp_patient VARCHAR(3), -- Yes/No
+    monthly_chilli_spend_rs DECIMAL(8,2),
+    preferred_chilli_category VARCHAR(50) -- Guntur, Byadgi, Kashmiri, Bird's Eye, Organic
+);
+
+INSERT INTO customers VALUES
+(1, 'Rajesh Khanna', 45, 'Hyderabad', 'Telangana', 'Retail', 'Yes', 'BP', 'Yes', 850, 'Guntur'),
+(2, 'Sneha Reddy', 29, 'Bengaluru', 'Karnataka', 'Retail', 'Yes', 'None', 'No', 1200, 'Organic'),
+(3, 'Amit Patel', 60, 'Ahmedabad', 'Gujarat', 'Wholesale', 'No', 'Diabetes+BP', 'Yes', 4500, 'Byadgi'),
+(4, 'Priya Singh', 34, 'Lucknow', 'UP', 'Retail', 'Yes', 'None', 'No', 600, 'Kashmiri'),
+(5, 'Guntur Chilli Depot', 52, 'Guntur', 'Andhra', 'Wholesale', 'No', 'BP', 'Yes', 12500, 'Guntur'),
+(6, 'Kavita Pawar', 41, 'Pune', 'Maharashtra', 'Vendor', 'Yes', 'None', 'No', 2100, 'Bird\'s Eye'),
+(7, 'Mohan Lal', 68, 'Jaipur', 'Rajasthan', 'Retail', 'Yes', 'BP+Heart', 'Yes', 950, 'Organic'),
+(8, 'Deepika Menon', 27, 'Chennai', 'Tamil Nadu', 'Retail', 'Yes', 'None', 'No', 780, 'Byadgi');
+
+-- Sample analysis queries
+SELECT 
+    bp_patient, 
+    AVG(monthly_chilli_spend_rs) AS avg_spend,
+    COUNT(*) AS total_customers
+FROM customers
+GROUP BY bp_patient;
+
+SELECT 
+    preferred_chilli_category, 
+    SUM(monthly_chilli_spend_rs) AS total_revenue
+FROM customers
+GROUP BY preferred_chilli_category
+ORDER BY total_revenue DESC;
