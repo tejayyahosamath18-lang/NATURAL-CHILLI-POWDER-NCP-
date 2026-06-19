@@ -1,3 +1,9 @@
+<img width="1172" height="665" alt="Screenshot 2026-06-19 161257" src="https://github.com/user-attachments/assets/18113625-c079-4bca-8dc4-b0eca353f395" />
+<img width="1315" height="707" alt="Screenshot 2026-06-19 155257" src="https://github.com/user-attachments/assets/21365eb3-ed56-44ea-a5b8-498cc345fc36" />
+<img width="1156" height="643" alt="Screenshot 2026-06-19 153714" src="https://github.com/user-attachments/assets/77635dcc-a214-47bc-bbf9-0e4ca2d96327" />
+<img width="1161" height="652" alt="Screenshot 2026-06-19 153621" src="https://github.com/user-attachments/assets/1b700a49-1964-4439-8cc3-ca35d1a4bf5a" />
+<img width="1158" height="656" alt="Screenshot 2026-06-19 153523" src="https://github.com/user-attachments/assets/75ec081c-3021-4255-9d93-61361aa4fcf7" />
+<img width="1311" height="747" alt="Screenshot 2026-06-19 153408" src="https://github.com/user-attachments/assets/8aa06c7e-eabe-47d8-9bcb-39fd87b63869" />
 # NATURAL-CHILLI-POWDER-NCP-
 Analytics &amp; Commercialization of Natural Chilli Powder (NCP) This project delivers a data-driven commercialization framework and comprehensive market evaluation for Natural Chilli Powder (NCP) and its premium product range. By leveraging a robust technical ecosystem—
 Project Description – Natural Chilli Powder (NCP) Business Analysis & Marketing Strategy
